@@ -1,1 +1,0 @@
-{"version":3,"sources":["script.js"],"names":["console","log"],"mappings":";;AAAAA,OAAO,CAACC,GAAR,CAAY,6BAAZ","sourcesContent":["console.log(\"Hello Marwa, I'm Working :)\");\n"],"file":"script.dev.js"}

@@ -1,0 +1,117 @@
+:root {
+  --bg: #ebf0f7;
+  --header: #fbf4f6;
+  --text: #2e2e2f;
+  --white: #ffffff;
+  --light-grey: #c4cad3;
+  --tag-1: #ceecfd;
+  --tag-1-text: #2e87ba;
+  --tag-2: #d6ede2;
+  --tag-2-text: #13854e;
+  --tag-3: #ceecfd;
+  --tag-3-text: #2d86ba;
+  --tag-4: #f2dcf5;
+  --tag-4-text: #a734ba;
+  --purple: #7784ee;
+}
+
+body {
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  width: 100%;
+  padding: 32px;
+  min-width: 100vh;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header nav {
+  display: flex;
+  position: relative;
+  padding: 32px 0;
+}
+
+.header .new-task {
+  display: flex;
+  position: absolute;
+  height: 45px;
+  left: 315px;
+}
+
+.header .new-task input {
+  width: 510px;
+  margin-right: 10px;
+  padding-left: 15px;
+}
+
+.header .new-task input::placeholder {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.header .new-task button {
+  width: 75px;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.container .project-tasks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  grid-column-gap: 1.5rem;
+}
+
+.container .project-tasks .tasks .task {
+  cursor: move;
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+  margin-bottom: 1rem;
+}
+
+.container .project-tasks .tasks .task {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .tasks .task .task-btns {
+  padding-top: 10px;
+}
+
+.container .project-tasks .tasks .task:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px 0px;
+  border-color: rgba(162, 179, 207, 0.2) !important;
+}
+
+.task .delete-btn,
+.edit-btn,
+.end-btn {
+  position: relative;
+  top: 4px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.task .delete-btn {
+  background: url(../assets/imgs/delete-icon.svg) center center / cover;
+}
+
+.task .edit-btn {
+  background: url(../assets/imgs/edit-icon.svg) center center / cover;
+}
+
+.task .end-btn {
+  background: url(../assets/imgs/done-icon.svg) center center / cover;
+}
