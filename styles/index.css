@@ -89,7 +89,7 @@ ul {
 }
 
 .task {
-  cursor: move;
+  cursor: grab;
   background-color: var(--white);
   padding: 1rem;
   border-radius: 8px;
@@ -107,10 +107,10 @@ ul {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px 0px;
   border-color: rgba(162, 179, 207, 0.2) !important;
 }
-
+/* 
 .task .dragging {
   opacity: 0.6;
-}
+} */
 
 .tasks .task input[type="checkbox"] {
   position: relative;

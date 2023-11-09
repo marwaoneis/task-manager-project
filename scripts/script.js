@@ -1,4 +1,4 @@
-const todoTasks = document.getElementById("tasks");
+const tasksContainer = document.getElementById("tasks");
 const addTaskBtn = document.getElementById("add");
 const inputText = document.getElementById("task-input");
 
@@ -26,7 +26,36 @@ function addTask() {
   newTask.draggable = true;
   taskList.push(newTask);
   console.log(taskList);
-  todoTasks.appendChild(newTask);
+
+  //Add Date Label
+  const currentDateLabel = document.createElement("span");
+  currentDateLabel.classList.add("label", "date");
+  currentDateLabel.innerText = "Date: " + getCurrentDate();
+  newTask.appendChild(currentDateLabel);
+
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+    return `${year}-${month < 10 ? "0" + month : month}-${
+      day < 10 ? "0" + day : day
+    }`;
+  }
+
+  //Add Priority Label
+  const priorityDropdown = document.getElementById("priorityDropdown");
+  const selectedPriority = priorityDropdown.value;
+  const priorityLabel = document.createElement("span");
+  priorityLabel.classList.add("label", "priority", selectedPriority);
+  priorityLabel.innerText =
+    capitalizeFirstLetter(selectedPriority) + " Priority";
+  console.log(selectedPriority);
+  newTask.appendChild(priorityLabel);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   // Add checkbox to each task
   const checkBox = document.createElement("input");
@@ -93,7 +122,58 @@ function addTask() {
     console.log(taskList);
   });
 
+  //Drag and Drop Implementation
+  let draggedTask = null;
+
+  tasksContainer.addEventListener("dragstart", (e) => {
+    if (e.target.classList.contains("task")) {
+      draggedTask = e.target;
+      draggedTask.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+    }
+  });
+
+  tasksContainer.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(tasksContainer, e.clientY);
+    const draggable = document.querySelector(".task.dragging");
+
+    if (draggable) {
+      if (afterElement == null) {
+        tasksContainer.appendChild(draggable);
+      } else {
+        tasksContainer.insertBefore(draggable, afterElement);
+      }
+    }
+  });
+
+  tasksContainer.addEventListener("dragend", () => {
+    if (draggedTask) {
+      draggedTask.classList.remove("dragging");
+      draggedTask = null;
+    }
+  });
+
+  function getDragAfterElement(container, y) {
+    const draggableElements = [
+      ...container.querySelectorAll(".task:not(.dragging)"),
+    ];
+
+    return draggableElements.reduce(
+      (closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+          return { offset, element: child };
+        } else {
+          return closest;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
+    ).element;
+  }
+
+  tasksContainer.appendChild(newTask);
   inputText.value = "";
 }
-
-//Drag and Drop Implementation
