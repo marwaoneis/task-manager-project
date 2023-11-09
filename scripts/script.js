@@ -27,36 +27,6 @@ function addTask() {
   taskList.push(newTask);
   console.log(taskList);
 
-  //Add Date Label
-  const currentDateLabel = document.createElement("span");
-  currentDateLabel.classList.add("label", "date");
-  currentDateLabel.innerText = "Date: " + getCurrentDate();
-  newTask.appendChild(currentDateLabel);
-
-  function getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    return `${year}-${month < 10 ? "0" + month : month}-${
-      day < 10 ? "0" + day : day
-    }`;
-  }
-
-  //Add Priority Label
-  const priorityDropdown = document.getElementById("priorityDropdown");
-  const selectedPriority = priorityDropdown.value;
-  const priorityLabel = document.createElement("span");
-  priorityLabel.classList.add("label", "priority", selectedPriority);
-  priorityLabel.innerText =
-    capitalizeFirstLetter(selectedPriority) + " Priority";
-  console.log(selectedPriority);
-  newTask.appendChild(priorityLabel);
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   // Add checkbox to each task
   const checkBox = document.createElement("input");
   checkBox.type = "checkbox";
@@ -74,6 +44,20 @@ function addTask() {
       textField.classList.remove("completed");
     }
   });
+
+  //Add Priority Label
+  const priorityDropdown = document.getElementById("priorityDropdown");
+  const selectedPriority = priorityDropdown.value;
+  const priorityLabel = document.createElement("span");
+  priorityLabel.classList.add("label", "priority", selectedPriority);
+  priorityLabel.innerText =
+    capitalizeFirstLetter(selectedPriority) + " Priority";
+  console.log(selectedPriority);
+  newTask.appendChild(priorityLabel);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   // Add task input
   const textField = document.createElement("input");
@@ -95,6 +79,23 @@ function addTask() {
   const btnDiv = document.createElement("div");
   btnDiv.classList.add("action-btn");
   newTask.appendChild(btnDiv);
+
+  //Add Date Label
+  const currentDateLabel = document.createElement("span");
+  currentDateLabel.classList.add("label", "date");
+  currentDateLabel.innerHTML =
+    ' <i class="fas fa-flag"></i>' + getCurrentDate();
+  btnDiv.appendChild(currentDateLabel);
+
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+    return `${year}-${month < 10 ? "0" + month : month}-${
+      day < 10 ? "0" + day : day
+    }`;
+  }
 
   //Add edit button
   const editBtn = document.createElement("button");
