@@ -31,6 +31,7 @@
               <input
                 id="task-input"
                 type="text"
+                autocomplete="off"
                 placeholder="Add your task here :)"
               />
               <select id="priorityDropdown" class="priorityDropdown">
@@ -45,9 +46,11 @@
       </nav>
     </header>
 
+    <!-- Tasks Container -->
     <div class="container">
       <div class="project-tasks">
-        <div class="task-todo-column">
+        <!-- TODO List -->
+        <div class="task-todo-column" id="allTasksColumn">
           <div class="column-heading">
             <h2>To-Do List</h2>
           </div>
@@ -61,12 +64,9 @@
             </div> -->
           </div>
         </div>
-        <div class="task-active-column">
-          <div class="column-heading">
-            <h2>Active</h2>
-          </div>
-        </div>
-        <div class="task-completed-column">
+
+        <!-- Completed List -->
+        <div class="task-completed-column" id="completedTasksColumn">
           <div class="column-heading">
             <h2>Completed</h2>
           </div>

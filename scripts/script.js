@@ -1,6 +1,7 @@
 const tasksContainer = document.getElementById("tasks");
 const addTaskBtn = document.getElementById("add");
 const inputText = document.getElementById("task-input");
+const completedTasksColumn = document.getElementById("completedTasksColumn");
 
 let taskList = [];
 
@@ -14,7 +15,7 @@ inputText.addEventListener("keypress", function (event) {
 
 function addTask() {
   if (inputText.value == "") {
-    alert("Kindly Enter a Task Name!!");
+    alert("Kindly Enter a Task Name!");
     return;
   }
   console.log(inputText.value);
@@ -38,12 +39,18 @@ function addTask() {
   checkBox.addEventListener("change", function () {
     if (checkBox.checked == true) {
       textField.classList.add("completed");
-      //   textField.classList.remove("task-text");
+      completeTask(this);
     } else {
-      //   textField.classList.add("task-text");
       textField.classList.remove("completed");
     }
   });
+
+  function completeTask(button) {
+    const task = button.parentElement;
+    task.classList.add("completed");
+    button.remove(); // Remove the "Mark as Completed" button
+    completedTasksColumn.appendChild(task);
+  }
 
   //Add Priority Label
   const priorityDropdown = document.getElementById("priorityDropdown");

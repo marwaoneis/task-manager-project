@@ -1,7 +1,4 @@
 :root {
-  --bg: #ebf0f7;
-  --header: #fbf4f6;
-  --text: #2e2e2f;
   --white: #fff;
   --light-grey: #c4cad3;
   --tag-1: #ceecfd;
@@ -12,7 +9,6 @@
   --tag-3-text: #2d86ba;
   --tag-4: #f2dcf5;
   --tag-4-text: #bb269b;
-  --purple: #7784ee;
 }
 
 body {
@@ -94,13 +90,14 @@ header .priorityDropdown {
 
 .container .project-tasks {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  grid-column-gap: 4.5rem;
+  grid-column-gap: 7.5rem;
 }
 
 .tasks {
   margin-top: 25px;
+  width: 70%;
 }
 
 .task {
@@ -157,12 +154,12 @@ header .priorityDropdown {
   margin-right: 5px;
 }
 
-.container .project-tasks .tasks .task {
+.tasks .task {
   display: flex;
   flex-direction: column;
 }
 
-.container .tasks .task .task-btns {
+.tasks .task .task-btns {
   padding-top: 10px;
 }
 
@@ -187,6 +184,7 @@ header .priorityDropdown {
 }
 
 .tasks .task input[type="checkbox"] {
+  cursor: pointer;
   position: relative;
   display: flex;
   align-self: flex-end;
@@ -196,8 +194,9 @@ header .priorityDropdown {
   width: 20px;
   border-radius: 50%;
   border: 2px solid #e1e1e1;
+  background-color: #17ba25;
 }
-
+/* 
 .tasks .task input[type="checkbox"]::before {
   content: "";
   position: absolute;
@@ -220,11 +219,26 @@ header .priorityDropdown {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
-}
+} */
 
 .tasks .task input.completed {
   text-decoration: line-through;
+  margin-top: 25px;
+}
+
+.task.draggable.completed {
+  margin-top: 25px;
+  width: 70%;
+}
+
+.task.completed .label.priority {
+  bottom: 0;
+}
+
+input.task-text.completed {
+  text-decoration: line-through;
   border: none;
+  width: 90%;
   margin: 15px;
 }
 
