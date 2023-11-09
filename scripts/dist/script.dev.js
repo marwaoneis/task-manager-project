@@ -1,10 +1,10 @@
-const todoTasks = document.getElementById("tasks");
-const addTaskBtn = document.getElementById("add");
-const inputText = document.getElementById("task-input");
+"use strict";
 
-let taskList = [];
+var todoTasks = document.getElementById("tasks");
+var addTaskBtn = document.getElementById("add");
+var inputText = document.getElementById("task-input");
+var taskList = []; // Adding Task Function
 
-// Adding Task Function
 addTaskBtn.addEventListener("click", addTask);
 inputText.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -17,83 +17,72 @@ function addTask() {
     alert("Kindly Enter a Task Name!!");
     return;
   }
-  console.log(inputText.value);
 
-  //   Create div for the new added task
-  const newTask = document.createElement("div");
+  console.log(inputText.value); //   Create div for the new added task
+
+  var newTask = document.createElement("div");
   newTask.classList.add("task");
   newTask.classList.add("draggable");
   newTask.draggable = true;
   taskList.push(newTask);
   console.log(taskList);
-  todoTasks.appendChild(newTask);
+  todoTasks.appendChild(newTask); // Add checkbox to each task
 
-  // Add checkbox to each task
-  const checkBox = document.createElement("input");
+  var checkBox = document.createElement("input");
   checkBox.type = "checkbox";
   newTask.appendChild(checkBox);
-  const checkMark = document.createElement("span");
+  var checkMark = document.createElement("span");
   checkMark.classList.add("checkmark");
   newTask.appendChild(checkMark);
-
   checkBox.addEventListener("change", function () {
     if (checkBox.checked == true) {
-      textField.classList.add("completed");
-      //   textField.classList.remove("task-text");
+      textField.classList.add("completed"); //   textField.classList.remove("task-text");
     } else {
       //   textField.classList.add("task-text");
       textField.classList.remove("completed");
     }
-  });
+  }); // Add task input
 
-  // Add task input
-  const textField = document.createElement("input");
+  var textField = document.createElement("input");
   textField.type = "text";
   textField.classList.add("task-text");
   textField.readOnly = true;
   textField.value = inputText.value;
-  newTask.appendChild(textField);
+  newTask.appendChild(textField); //Blur task
 
-  //Blur task
   textField.addEventListener("blur", function () {
     if (textField.value == "") {
       newTask.remove();
     }
+
     textField.readOnly = true;
-  });
+  }); //Create div for holding buttons
 
-  //Create div for holding buttons
-  const btnDiv = document.createElement("div");
+  var btnDiv = document.createElement("div");
   btnDiv.classList.add("action-btn");
-  newTask.appendChild(btnDiv);
+  newTask.appendChild(btnDiv); //Add edit button
 
-  //Add edit button
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("edit");
-  //   editBtn.innerHTML =
+  var editBtn = document.createElement("button");
+  editBtn.classList.add("edit"); //   editBtn.innerHTML =
   //     '<img src="../assets/imgs/edit-icon.svg" alt="edit task" />';
-  btnDiv.appendChild(editBtn);
 
+  btnDiv.appendChild(editBtn);
   editBtn.addEventListener("click", function () {
     textField.readOnly = false;
     textField.focus();
-  });
+  }); //Add delete button
 
-  //Add delete button
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("delete");
-  //   deleteBtn.innerHTML =
+  var deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete"); //   deleteBtn.innerHTML =
   //     '<img src="../assets/imgs/delete-icon.svg" alt="delete task" />';
-  btnDiv.appendChild(deleteBtn);
 
+  btnDiv.appendChild(deleteBtn);
   deleteBtn.addEventListener("click", function () {
-    const removedTask = taskList.indexOf(newTask);
+    var removedTask = taskList.indexOf(newTask);
     taskList.splice(removedTask, 1);
     newTask.remove();
     console.log(taskList);
   });
-
   inputText.value = "";
-}
-
-//Drag and Drop Implementation
+} //Drag and Drop Implementation
+//# sourceMappingURL=script.dev.js.map
