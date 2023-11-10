@@ -146,7 +146,7 @@ header .priorityDropdown {
 }
 
 .label.priority.low {
-  background-color: var(--tag-2); /* LIght Orange color for low priority */
+  background-color: var(--tag-2); /* Light Orange color for low priority */
   color: var(--tag-2-text);
   width: 125px;
 }
@@ -203,30 +203,6 @@ header .priorityDropdown {
   border: 2px solid #e1e1e1;
   background-color: #17ba25;
 }
-/* 
-.tasks .task input[type="checkbox"]::before {
-  content: "";
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-}
-
-.tasks .task input[type="checkbox"]:checked {
-  background-color: #17ba25;
-  border-color: #17ba25;
-}
-
-.tasks .task input[type="checkbox"]:checked::before {
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 4px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-} */
 
 .tasks .task input.completed {
   text-decoration: line-through;
@@ -275,7 +251,32 @@ input.task-text.completed {
 .task .edit {
   background: url(../assets/imgs/edit-icon.svg) center center / cover;
 }
-
+/* 
 .task .end-btn {
   background: url(../assets/imgs/done-icon.svg) center center / cover;
+} */
+
+/* 
+.tasks .task input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
+
+.tasks .task input[type="checkbox"]:checked {
+  background-color: #17ba25;
+  border-color: #17ba25;
+}
+
+.tasks .task input[type="checkbox"]:checked::before {
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+} */
