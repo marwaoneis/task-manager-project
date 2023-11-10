@@ -19,7 +19,7 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   width: 100%;
-  padding: 32px;
+  padding: 35px;
   min-width: 100vh;
   color: var(--white);
 }
@@ -43,7 +43,13 @@ ul {
 .header nav {
   display: flex;
   position: relative;
-  padding: 32px 0;
+  padding: 20px 0;
+}
+
+.header .title {
+  margin-bottom: 45px;
+  margin-left: 10px;
+  font-size: 21px;
 }
 
 .header .new-task {
@@ -86,6 +92,7 @@ header .priorityDropdown {
 
 .container {
   margin: 50px;
+  padding-top: 20px;
 }
 
 .container .project-tasks {
