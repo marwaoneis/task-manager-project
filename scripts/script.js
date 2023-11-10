@@ -18,7 +18,7 @@ function addTask() {
     alert("Kindly Enter a Task Name!");
     return;
   }
-  console.log(inputText.value);
+  // console.log(inputText.value);
 
   //   Create div for the new added task
   const newTask = document.createElement("div");
@@ -26,7 +26,7 @@ function addTask() {
   newTask.classList.add("draggable");
   newTask.draggable = true;
   taskList.push(newTask);
-  console.log(taskList);
+  // console.log(taskList);
 
   // Add checkbox to each task
   const checkBox = document.createElement("input");
@@ -59,7 +59,7 @@ function addTask() {
   priorityLabel.classList.add("label", "priority", selectedPriority);
   priorityLabel.innerText =
     capitalizeFirstLetter(selectedPriority) + " Priority";
-  console.log(selectedPriority);
+  // console.log(selectedPriority);
   newTask.appendChild(priorityLabel);
 
   function capitalizeFirstLetter(string) {
@@ -127,7 +127,7 @@ function addTask() {
     const removedTask = taskList.indexOf(newTask);
     taskList.splice(removedTask, 1);
     newTask.remove();
-    console.log(taskList);
+    // console.log(taskList);
   });
 
   //Drag and Drop Implementation
