@@ -44,6 +44,7 @@ ul {
   display: flex;
   position: relative;
   padding: 20px 0;
+  justify-content: center;
 }
 
 .header .title {
@@ -74,20 +75,23 @@ ul {
 }
 
 .header .new-task button {
-  width: 77px;
+  width: 85px;
   border: none;
   font-weight: bold;
   border-radius: 100px;
   background-color: var(--white);
+  cursor: pointer;
 }
 
 header .priorityDropdown {
   margin-right: 10px;
   text-align: center;
   border: none;
+  cursor: pointer;
   font-weight: bold;
   border-radius: 100px;
   background-color: var(--white);
+  border-right: 10px solid transparent;
 }
 
 .container {
