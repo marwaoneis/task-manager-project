@@ -168,6 +168,7 @@ function addTask() {
     ];
 
     return draggableElements.reduce(
+      //.reduce() is a method in JavaScript that is used to reduce an array to a single value. It takes a callback function and an initial value. In this case, the initial value is an object { offset: Number.NEGATIVE_INFINITY }, and the callback function takes two parameters: closest and child.
       (closest, child) => {
         const box = child.getBoundingClientRect();
         const offset = y - box.top - box.height / 2;
@@ -176,7 +177,7 @@ function addTask() {
           return { offset, element: child };
         } else {
           return closest;
-        }
+        } //The callback function is called for each element in the draggableElements array. It calculates the vertical offset of the current element (child) relative to the given y coordinate. If the offset is less than 0 and greater than the offset of the current closest element, it updates the closest object with the current element and its offset.
       },
       { offset: Number.NEGATIVE_INFINITY }
     ).element;
@@ -185,3 +186,8 @@ function addTask() {
   tasksContainer.appendChild(newTask);
   inputText.value = "";
 }
+
+// Spread Operation Example By Taha
+// const array = [1, 2, 3];
+// const array2 = [4, 5, 6, ...array];
+// console.log(array2);
